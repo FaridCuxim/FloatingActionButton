@@ -76,7 +76,7 @@ public class ActividadPrincipal extends AppCompatActivity {
                             .setInterpolator(interpolator)
                             .start();
                 }
-                /*Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG)
+                /*Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG).
                         .setAction("Action", null).show();*/
             }
         });
