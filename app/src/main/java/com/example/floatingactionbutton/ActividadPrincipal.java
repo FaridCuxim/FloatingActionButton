@@ -15,6 +15,8 @@ import android.view.animation.Interpolator;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
+    boolean click = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,8 @@ public class ActividadPrincipal extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setScaleX(1);
+        fab.setImageResource(android.R.drawable.ic_menu_add);
+        /*fab.setScaleX(1);
         fab.setScaleY(1);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -60,12 +63,21 @@ public class ActividadPrincipal extends AppCompatActivity {
 
                         }
                     });
-        }
+        }*/
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG)
-                        /*.setAction("Action", null)*/.show();
+                click = !click;
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                    Interpolator interpolator = AnimationUtils.loadInterpolator(getBaseContext(), android.R.interpolator.fast_out_slow_in);
+
+                    view.animate()
+                            .rotation(click ? 45f : 0)
+                            .setInterpolator(interpolator)
+                            .start();
+                }
+                /*Snackbar.make(view, "Se presionó el FAB", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
     }
