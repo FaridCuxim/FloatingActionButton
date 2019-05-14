@@ -1,18 +1,15 @@
 package com.example.floatingactionbutton;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;;
 
 public class ActividadPrincipal extends AppCompatActivity implements View.OnClickListener {
 
-    private FABToolbarLayout morph;
+    private FloatingActionsMenu morph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,28 +18,24 @@ public class ActividadPrincipal extends AppCompatActivity implements View.OnClic
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        morph = (FABToolbarLayout) findViewById(R.id.fabtoolbar);
+        morph = (FloatingActionsMenu) findViewById(R.id.menu_fab);
 
         View uno, dos, tres, cuatro;
-        uno = findViewById(R.id.uno);
-        dos = findViewById(R.id.dos);
-        tres = findViewById(R.id.tres);
-        cuatro = findViewById(R.id.cuatro);
+        uno = findViewById(R.id.accion_favorito);
+        dos = findViewById(R.id.accion_buscar);
+        tres = findViewById(R.id.accion_carrito);
 
-        fab.setOnClickListener(this);
+        morph.setOnClickListener(this);
         uno.setOnClickListener(this);
         dos.setOnClickListener(this);
         tres.setOnClickListener(this);
-        cuatro.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
-        if (v.getId() == R.id.fab){
-            morph.show();
+        if (v.getId() == R.id.menu_fab){
+            morph.setEnabled(true);
         }
-        morph.hide();
     }
 
 }
